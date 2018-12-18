@@ -1,7 +1,8 @@
 /* variable declaration */
 :root {
   --textbox-color: white;
-  --doc-width: 50rem;
+  --doc-width: 40rem;
+  --box-width: 36rem;
 }
 
 .App {
@@ -15,7 +16,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,12 +32,14 @@
 .Page {
   background-color: white;
   width: var(--doc-width);
-  height: 60rem;
+  height: 50rem;
+  margin-top: 1em;
+  margin-bottom: 11em;
 }
 
 .headerBox {
   border-color: var(--textbox-color);
-  width: 45rem;
+  width: var(--box-width);
   height: 5em;
   margin-top: 2em;
   border:none;
@@ -44,14 +47,14 @@
 
 .bodyBox {
   border-color: var(--textbox-color);
-  width: 45rem;
+  width: var(--box-width);
   margin-top: 2em;
-  height: 62em;
+  height: 54em;
   border:none;
 }
 
 .footerBox {
-  width: 45rem;
+  width: var(--box-width);
   margin-top: 2em;
   height: 4em;
   border-color: var(--textbox-color);
@@ -69,8 +72,9 @@
 
 .bannerContainer {
   width: 100%;
-  height: 4em;
-  margin-bottom: 0.5rem;
+  height: 100%;
+  /* margin-bottom: 0.5rem; */
+  margin-top: 1em;
   background-color: #9ecdfe;
   display: flex;
   justify-content: center;
@@ -95,6 +99,8 @@
 .richTextEdit {
   background: red;
   height: 47px;
+  display: flex;
+
   margin-top: 3em;
   width: 100%;
   position: absolute;
