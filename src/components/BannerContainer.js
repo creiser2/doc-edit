@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar'
+import RichTextEditBar from './RichTextEditBar'
 
-class NavBar extends Component {
+class BannerContainer extends Component {
   state = {
   }
 
@@ -16,12 +18,13 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className="navBar">
-        
+      <div className="bannerContainer">
+        <NavBar />
+        <RichTextEditBar />
       </div>
     );
   }
 }
 
 
-export default NavBar;
+export default BannerContainer;
