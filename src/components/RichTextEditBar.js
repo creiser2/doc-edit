@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import RichTextElementsBIU from './RichTextElementsBIU';
+import FontSizeSelect from './FontsizeSelect';
 import { connect } from 'react-redux';
 
 class RichTextEditBar extends Component {
@@ -11,7 +12,12 @@ class RichTextEditBar extends Component {
   }
 
   renderRichButtons = () => {
-    return <div class='bold-italic-underline-holder'><RichTextElementsBIU /></div>
+    return (
+      <Fragment>
+        <div class='font-size-selector'><FontSizeSelect /></div>
+        <div class='bold-italic-underline-holder'><RichTextElementsBIU /></div>
+      </Fragment>
+    )
   }
 
   render() {

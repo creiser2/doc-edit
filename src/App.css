@@ -139,16 +139,31 @@ textarea { resize: none; overflow: hidden }
   color: black;
   font-size: 0.5em;
   padding: 3%;
+  cursor: pointer;
+  user-select: none;
 }
 
 
 .biu-div-clicked {
   outline: none;
   padding: 0;
-  color: red;
-  background-color: black;
+  background-color: grey;
+  color: white;
   font-size: 0.5em;
   padding: 3%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.font-size-selector {
+  color: black;
+  width: 3%;
+  /* height: 100%; */
+  font-size: 0.5em;
+  border-color: grey;
+  border-style: solid;
+  border-width: 0.02em;
+  margin-right: 1em;
 }
 
 
