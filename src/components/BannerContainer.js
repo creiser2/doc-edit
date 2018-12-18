@@ -10,15 +10,10 @@ class BannerContainer extends Component {
     return JSON.stringify(this.state)
   }
 
-  renderRichTextOptions = () => {
-    //iterate over a list of installed rich text options
-    return <div className="navElement">B</div>
-  }
-
-
   render() {
     return (
       <div className="bannerContainer">
+        
       </div>
     );
   }
