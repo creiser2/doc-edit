@@ -19,8 +19,6 @@ class BannerContainer extends Component {
   render() {
     return (
       <div className="bannerContainer">
-        <NavBar />
-        <RichTextEditBar />
       </div>
     );
   }
