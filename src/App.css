@@ -1,6 +1,8 @@
 /* variable declaration */
 :root {
   --textarea-bg-color: white;
+  --navbar-bg-color: white;
+  --rte-bg-color: white;
   --doc-width: 40rem;
   --box-width: 36rem;
 }
@@ -66,22 +68,23 @@
 
 .navBar {
   width: 100%;
-  height: 75%;
-  margin-bottom: 0.5rem;
-  background-color: #e0e0e0;
+  height: 66.6%;
+  /* margin-bottom: 0.5rem; */
+  background-color: var(--navbar-bg-color: white);
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  border-color: black;
+  border-bottom-style: solid;
+  border-top-style: solid;
 }
 
 .bannerContainer {
   width: 100%;
   height: 100%;
-  /* margin-bottom: 0.5rem; */
-  margin-top: 1em;
-  min-height: 3rem;
+  min-height: 5rem;
   background-color: #9ecdfe;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .navElement {
@@ -101,16 +104,53 @@
 }
 
 .richTextEdit {
-  background: red;
-  height: 47px;
+  background: var(--rte-bg-color);
+  height: 33.3%;
   display: flex;
-
-  margin-top: 3em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  position: absolute;
 }
 
 textarea { resize: none; overflow: hidden }
+
+/* ------------------------RTE stuff-------------------------------- */
+
+.rtelement {
+  background-color: red;
+  color: black;
+}
+
+.bold-italic-underline-holder {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  border-color: black;
+  border-left-style: solid;
+  border-right-style: solid;
+  width: 6%;
+}
+
+.biu-div {
+  outline: none;
+  padding: 0;
+  color: black;
+  font-size: 0.5em;
+  padding: 3%;
+}
+
+
+.biu-div-clicked {
+  outline: none;
+  padding: 0;
+  color: red;
+  background-color: black;
+  font-size: 0.5em;
+  padding: 3%;
+}
+
 
 @keyframes App-logo-spin {
   from {

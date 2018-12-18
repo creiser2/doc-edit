@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar'
 import RichTextEditBar from './RichTextEditBar'
+import { connect } from 'react-redux';
+
 
 class BannerContainer extends Component {
-  state = {
-  }
-
-  stateToString = () => {
-    return JSON.stringify(this.state)
-  }
-
   render() {
     return (
       <div className="bannerContainer">
-        
+        <NavBar />
+        <RichTextEditBar />
       </div>
     );
   }
 }
 
 
-export default BannerContainer;
+function msp(state) {
+  return {
+  }
+}
+
+function mdp(dispatch) {
+  return {
+  }
+}
+
+export default connect(msp, mdp)(BannerContainer);
