@@ -1,4 +1,13 @@
 import React, { Component, Fragment } from 'react';
+import unbold from '../assets/unbolded.svg';
+import bold from '../assets/bolded.svg';
+import un_italicized from '../assets/un_italicized.svg';
+import italicized from '../assets/italicized.svg';
+import not_underlined from '../assets/not_underlined.svg';
+import underlined from '../assets/underlined.svg';
+import text_color_unclicked from '../assets/text_color_unclicked.svg';
+import text_color_clicked from '../assets/text_color_clicked.svg';
+
 import { connect } from 'react-redux';
 
 class RichTextElementsBIU extends Component {
@@ -12,24 +21,24 @@ class RichTextElementsBIU extends Component {
     return (
       <Fragment>
         {this.props.BIUBar.boldClicked ?
-          <div class='biu-div-clicked' onClick={(event) => this.props.boldButtonClicked()}>B</div>
+          <img src={bold} className="biu_svg" onClick={(event) => this.props.boldButtonClicked()}/>
         :
-          <div class='biu-div' onClick={(event) => this.props.boldButtonClicked()}>B</div>
+          <img src={unbold} className="biu_svg" onClick={(event) => this.props.boldButtonClicked()}/>
         }
         {this.props.BIUBar.italicClicked ?
-          <div class='biu-div-clicked' onClick={(event) => this.props.italicButtonClicked()}>I</div>
+          <img src={italicized} className="biu_svg" onClick={(event) => this.props.italicButtonClicked()}/>
         :
-          <div class='biu-div' onClick={(event) => this.props.italicButtonClicked()}>I</div>
+          <img src={un_italicized} className="biu_svg" onClick={(event) => this.props.italicButtonClicked()}/>
         }
         {this.props.BIUBar.underlineClicked ?
-          <div class='biu-div-clicked' onClick={(event) => this.props.underlineButtonClicked()}>U</div>
+          <img src={underlined} className="biu_svg" onClick={(event) => this.props.underlineButtonClicked()}/>
         :
-          <div class='biu-div' onClick={(event) => this.props.underlineButtonClicked()}>U</div>
+          <img src={not_underlined} className="biu_svg" onClick={(event) => this.props.underlineButtonClicked()}/>
         }
         {this.props.BIUBar.textColorClicked ?
-          <div class='biu-div-clicked' onClick={(event) => this.props.textColorClicked()}>A</div>
+          <img src={text_color_clicked} className="biu_svg" onClick={(event) => this.props.textColorClicked()}/>
         :
-          <div class='biu-div' onClick={(event) => this.props.textColorClicked()}>A</div>
+          <img src={text_color_unclicked} className="biu_svg" onClick={(event) => this.props.textColorClicked()}/>
         }
       </Fragment>
     )

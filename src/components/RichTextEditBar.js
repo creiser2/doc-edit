@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import RichTextElementsBIU from './RichTextElementsBIU';
-import FontSizeSelect from './FontsizeSelect';
+import FontSizeSelect from './FontSizeSelect';
 import { connect } from 'react-redux';
 
 class RichTextEditBar extends Component {

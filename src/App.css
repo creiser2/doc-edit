@@ -131,6 +131,10 @@ textarea { resize: none; overflow: hidden }
   border-left-style: solid;
   border-right-style: solid;
   width: 6%;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  width: 10%;
+  height: 100%;
 }
 
 .biu-div {
@@ -166,6 +170,14 @@ textarea { resize: none; overflow: hidden }
   margin-right: 1em;
 }
 
+
+/*-----------------------------------SVG ------------------------ */
+
+.biu_svg {
+  width: 15%;
+  cursor: pointer;
+  user-select: none;
+}
 
 @keyframes App-logo-spin {
   from {

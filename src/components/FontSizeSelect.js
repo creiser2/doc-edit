@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import NavBar from './NavBar'
 import RichTextEditBar from './RichTextEditBar'
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ class FontSizeSelect extends Component {
 
   render() {
     return (
-      <div class='font-size-selector'>11</div>
+      <Fragment>11</Fragment>
     );
   }
 }
