@@ -19,6 +19,7 @@ class Page extends Component {
   handleTextEdit = inVal => {
     switch(inVal) {
       case "header":
+        console.log("headerclicked")
         break;
       case "body":
         break;
@@ -38,14 +39,24 @@ class Page extends Component {
     return (
       <div className="Page">
       <label>
-        <iframe id="headerBox" name="header" className="headerBox" scrolling="no" onClick={this.handleTextEdit("header")}></iframe>
-        <iframe id="bodyBox" name="body" className="bodyBox" onClick={this.handleTextEdit("body")}></iframe>
-        <iframe id="footerBox" name="footer" className="footerBox" onClick={this.handleTextEdit("footer")}></iframe>
+        <iframe id="headerBox" name="header" className="headerBox" ></iframe>
+        <iframe id="bodyBox" name="body" className="bodyBox" ></iframe>
+        <iframe id="footerBox" name="footer" className="footerBox" ></iframe>
       </label>
       </div>
     );
   }
 }
 
+function msp(state) {
+  return {
+  }
+}
 
-export default Page;
+function mdp(dispatch) {
+  return {
+  }
+}
+
+
+export default connect(msp, mdp)(Page);
