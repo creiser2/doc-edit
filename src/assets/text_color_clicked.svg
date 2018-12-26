@@ -3,15 +3,16 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
 <style type="text/css">
-	.st0{font-family:'Baskerville';}
-	.st1{font-size:455.1855px;}
-	.st2{display:none;}
-	.st3{fill:none;stroke:#60B0F3;stroke-width:51;stroke-miterlimit:10;}
+	.st0{fill:#73AFED;}
+	.st1{font-family:'Baskerville';}
+	.st2{font-size:455.1855px;}
+	.st3{display:none;}
+	.st4{fill:none;stroke:#60B0F3;stroke-width:51;stroke-miterlimit:10;}
 </style>
 <g id="Layer_1_1_">
-	<text transform="matrix(1 0 0 1 85.5703 361.3076)" class="st0 st1">A</text>
+	<text transform="matrix(1 0 0 1 85.5703 361.3076)" class="st0 st1 st2">A</text>
 </g>
-<g id="background" class="st2">
+<g id="background" class="st3">
 </g>
-<line class="st3" x1="15.6" y1="423" x2="474.3" y2="423"/>
+<line class="st4" x1="15.6" y1="423" x2="474.3" y2="423"/>
 </svg>
