@@ -16,29 +16,52 @@ class RichTextElementsBIU extends Component {
     return JSON.stringify(this.state)
   }
 
+  handleBoldButtonClicked = () => {
+    this.props.boldButtonClicked();
+    debugger;
+  }
+
+  handleItalicButtonClicked = () => {
+    this.props.italicButtonClicked();
+  }
+
+  handleUnderlineButtonClicked = () => {
+    this.props.underlineButtonClicked();
+  }
+
+  handleTextColorClicked = () => {
+    this.props.textColorClicked();
+  }
+
+  //change iframes, from here... unfortunately...
+  execCMD = () => {
+
+  }
+
+
   loadRTEAnimations = () => {
     let innerVals = this.props.BIUBar;
     return (
       <Fragment>
         {this.props.BIUBar.boldClicked ?
-          <img src={bold} className="biu_svg" onClick={(event) => this.props.boldButtonClicked()}/>
+          <img src={bold} className="biu_svg" onClick={(event) => this.handleBoldButtonClicked()}/>
         :
-          <img src={unbold} className="biu_svg" onClick={(event) => this.props.boldButtonClicked()}/>
+          <img src={unbold} className="biu_svg" onClick={(event) => this.handleBoldButtonClicked()}/>
         }
         {this.props.BIUBar.italicClicked ?
-          <img src={italicized} className="biu_svg" onClick={(event) => this.props.italicButtonClicked()}/>
+          <img src={italicized} className="biu_svg" onClick={(event) => this.handleItalicButtonClicked()}/>
         :
-          <img src={un_italicized} className="biu_svg" onClick={(event) => this.props.italicButtonClicked()}/>
+          <img src={un_italicized} className="biu_svg" onClick={(event) => this.handleItalicButtonClicked()}/>
         }
         {this.props.BIUBar.underlineClicked ?
-          <img src={underlined} className="biu_svg" onClick={(event) => this.props.underlineButtonClicked()}/>
+          <img src={underlined} className="biu_svg" onClick={(event) => this.handleUnderlineButtonClicked()}/>
         :
-          <img src={not_underlined} className="biu_svg" onClick={(event) => this.props.underlineButtonClicked()}/>
+          <img src={not_underlined} className="biu_svg" onClick={(event) => this.handleUnderlineButtonClicked()}/>
         }
         {this.props.BIUBar.textColorClicked ?
-          <img src={text_color_clicked} className="biu_svg" onClick={(event) => this.props.textColorClicked()}/>
+          <img src={text_color_clicked} className="biu_svg" onClick={(event) => this.handleTextColorClicked()}/>
         :
-          <img src={text_color_unclicked} className="biu_svg" onClick={(event) => this.props.textColorClicked()}/>
+          <img src={text_color_unclicked} className="biu_svg" onClick={(event) => this.handleTextColorClicked()}/>
         }
       </Fragment>
     )
@@ -54,6 +77,7 @@ class RichTextElementsBIU extends Component {
 function msp(state) {
   return {
     BIUBar: state.BIUBar,
+    iframes: state.iframes,
   }
 }
 

@@ -4,12 +4,18 @@ const defaultState = {
     italicClicked: false,
     underlineClicked: false,
     textColorClicked: false,
+  },
+  iframes: {
+    headerBox: "",
+    bodyBox: "",
+    footerBox: ""
   }
 }
 
 
-export default function reducer(state = defaultState, action) {
+export default function reducer(state=defaultState, action) {
   switch(action.type) {
+    //RTE BAR
     case "BOLD_BUTTON_CLICKED":
       return {
         ...state, BIUBar: {...state.BIUBar, boldClicked: !state.BIUBar.boldClicked}
@@ -25,6 +31,21 @@ export default function reducer(state = defaultState, action) {
     case "TEXTCOLOR_BUTTON_CLICKED":
       return {
         ...state, BIUBar: {...state.BIUBar, textColorClicked: !state.BIUBar.textColorClicked}
+      }
+    //IFRAMES
+    case "SET_HEADERBOX_ELEMENT":
+      return {
+        ...state, iframes: {...state.iframes, headerBox: action.payload}
+      }
+
+    case "SET_BODYBOX_ELEMENT":
+      return {
+        ...state, iframes: {...state.iframes, bodyBox: action.payload}
+      }
+
+    case "SET_FOOTERBOX_ELEMENT":
+      return {
+        ...state, iframes: {...state.iframes, footerBox: action.payload}
       }
     default:
       return state;

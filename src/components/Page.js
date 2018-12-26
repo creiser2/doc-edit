@@ -9,30 +9,30 @@ class Page extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      header: document.getElementById("headerBox"),
-      body: document.getElementById("bodyBox"),
-      footer: document.getElementById("footerBox")
-    })
-    this.enableEditMode();
+    this.props.setHeaderElement(document.getElementById("headerBox"));
+    this.props.setBodyElement(document.getElementById("bodyBox"));
+    this.props.setFooterElement(document.getElementById("footerBox"));
+    //To fix most things, gooogle how to wait until after dispatch is finished in react
+    // this.enableEditMode();
   }
 
-  handleTextEdit = inVal => {
-    switch(inVal) {
-      case "header":
-        console.log("headerclicked")
-        break;
-      case "body":
-        break;
-      case "footer":
-        break;
-    }
-  }
+  // handleTextEdit = inVal => {
+  //   switch(inVal) {
+  //     case "header":
+  //       console.log("headerclicked")
+  //       break;
+  //     case "body":
+  //       break;
+  //     case "footer":
+  //       break;
+  //   }
+  // }
 
   enableEditMode = () => {
-    header.document.designMode = 'On';
-    body.document.designMode = 'On';
-    footer.document.designMode = 'On';
+    debugger;
+    this.props.iframes.headerBox.contentWindow.document.designMode = 'On';
+    this.props.iframes.bodyBox.contentWindow.document.designMode = 'On';
+    this.props.iframes.footerBox.contentWindow.document.designMode = 'On';
   }
 
 
@@ -51,11 +51,21 @@ class Page extends Component {
 
 function msp(state) {
   return {
+    BIUBar: state.BIUBar,
   }
 }
 
 function mdp(dispatch) {
   return {
+    setHeaderElement: (element) => {
+      dispatch({type: "SET_HEADERBOX_ELEMENT", payload: element})
+    },
+    setBodyElement: (element) => {
+      dispatch({type: "SET_BODYBOX_ELEMENT", payload: element})
+    },
+    setFooterElement: (element) => {
+      dispatch({type: "SET_FOOTERBOX_ELEMENT", payload: element})
+    },
   }
 }
 
