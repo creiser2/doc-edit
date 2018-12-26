@@ -8,28 +8,14 @@ class Page extends Component {
   }
 
 
-  handleHeaderTextEdit = event => {
-    this.setState({
-      headerText: event.target.value
-    })
-  }
 
-  handleTextEdit = event => {
-    switch(event.target.id) {
+  handleTextEdit = inVal => {
+    switch(inVal) {
       case "header":
-        this.setState({
-          headerText: event.target.value
-        })
         break;
       case "body":
-        this.setState({
-          text: event.target.value
-        })
         break;
       case "footer":
-        this.setState({
-          footerText: event.target.value
-        })
         break;
     }
   }
@@ -43,9 +29,9 @@ class Page extends Component {
     return (
       <div className="Page">
       <label>
-        <textarea id="header" type="text" className="headerBox" value={this.state.headerText} onChange={this.handleTextEdit} />
-        <textarea id="body" type="text" className="bodyBox" value={this.state.text} onChange={this.handleTextEdit} />
-        <textarea id="footer" type="text" className="footerBox" value={this.state.footerText} onChange={this.handleTextEdit} />
+        <iframe name="header" className="headerBox" onClick={this.handleTextEdit("header")}></iframe>
+        <iframe name="body" className="bodyBox" onClick={this.handleTextEdit("body")}></iframe>
+        <iframe name="footer" className="footerBox" onClick={this.handleTextEdit("footer")}></iframe>
       </label>
       </div>
     );
