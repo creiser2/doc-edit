@@ -113,8 +113,6 @@
   width: 100%;
 }
 
-textarea { resize: none; overflow: hidden }
-
 /* ------------------------RTE stuff-------------------------------- */
 
 .rtelement {
@@ -187,3 +185,8 @@ textarea { resize: none; overflow: hidden }
     transform: rotate(360deg);
   }
 }
+
+
+
+
+/* element-wide commands */

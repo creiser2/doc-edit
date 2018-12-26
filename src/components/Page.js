@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Page extends Component {
   state = {
@@ -39,9 +40,9 @@ class Page extends Component {
     return (
       <div className="Page">
       <label>
-        <iframe id="headerBox" name="header" className="headerBox" ></iframe>
-        <iframe id="bodyBox" name="body" className="bodyBox" ></iframe>
-        <iframe id="footerBox" name="footer" className="footerBox" ></iframe>
+        <iframe id="headerBox" name="header" className="headerBox" scrolling="no"></iframe>
+        <iframe id="bodyBox" name="body" className="bodyBox" scrolling="no"></iframe>
+        <iframe id="footerBox" name="footer" className="footerBox" scrolling="no"></iframe>
       </label>
       </div>
     );
