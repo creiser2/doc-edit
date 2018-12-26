@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 
 class Page extends Component {
   state = {
-    headerText: "",
-    text: "",
-    footerText: ""
+    header: "",
+    body: "",
+    footer: "",
   }
 
-
+  componentDidMount() {
+    this.setState({
+      header: document.getElementById("headerBox"),
+      body: document.getElementById("bodyBox"),
+      footer: document.getElementById("footerBox")
+    })
+    this.enableEditMode();
+  }
 
   handleTextEdit = inVal => {
     switch(inVal) {
@@ -20,8 +27,10 @@ class Page extends Component {
     }
   }
 
-  stateToString = () => {
-    return JSON.stringify(this.state)
+  enableEditMode = () => {
+    header.document.designMode = 'On';
+    body.document.designMode = 'On';
+    footer.document.designMode = 'On';
   }
 
 
@@ -29,9 +38,9 @@ class Page extends Component {
     return (
       <div className="Page">
       <label>
-        <iframe name="header" className="headerBox" onClick={this.handleTextEdit("header")}></iframe>
-        <iframe name="body" className="bodyBox" onClick={this.handleTextEdit("body")}></iframe>
-        <iframe name="footer" className="footerBox" onClick={this.handleTextEdit("footer")}></iframe>
+        <iframe id="headerBox" name="header" className="headerBox" scrolling="no" onClick={this.handleTextEdit("header")}></iframe>
+        <iframe id="bodyBox" name="body" className="bodyBox" onClick={this.handleTextEdit("body")}></iframe>
+        <iframe id="footerBox" name="footer" className="footerBox" onClick={this.handleTextEdit("footer")}></iframe>
       </label>
       </div>
     );
