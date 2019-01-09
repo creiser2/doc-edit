@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actionCreator from '../reducers/actions';
 
 class Page extends Component {
   state = {
@@ -9,32 +10,14 @@ class Page extends Component {
   }
 
   componentDidMount() {
-    this.props.setHeaderElement(document.getElementById("headerBox"));
-    this.props.setBodyElement(document.getElementById("bodyBox"));
-    this.props.setFooterElement(document.getElementById("footerBox"));
-    //To fix most things, gooogle how to wait until after dispatch is finished in react
-    // this.enableEditMode();
+    let elements = {
+      head: document.getElementById("headerBox"),
+      body: document.getElementById("bodyBox"),
+      foot: document.getElementById("footerBox")
+    }
+    this.props.storeHeaderBodyFooter(elements.head, elements.body, elements.foot);
+
   }
-
-  // handleTextEdit = inVal => {
-  //   switch(inVal) {
-  //     case "header":
-  //       console.log("headerclicked")
-  //       break;
-  //     case "body":
-  //       break;
-  //     case "footer":
-  //       break;
-  //   }
-  // }
-
-  enableEditMode = () => {
-    debugger;
-    this.props.iframes.headerBox.contentWindow.document.designMode = 'On';
-    this.props.iframes.bodyBox.contentWindow.document.designMode = 'On';
-    this.props.iframes.footerBox.contentWindow.document.designMode = 'On';
-  }
-
 
   render() {
     return (
@@ -57,15 +40,9 @@ function msp(state) {
 
 function mdp(dispatch) {
   return {
-    setHeaderElement: (element) => {
-      dispatch({type: "SET_HEADERBOX_ELEMENT", payload: element})
-    },
-    setBodyElement: (element) => {
-      dispatch({type: "SET_BODYBOX_ELEMENT", payload: element})
-    },
-    setFooterElement: (element) => {
-      dispatch({type: "SET_FOOTERBOX_ELEMENT", payload: element})
-    },
+    storeHeaderBodyFooter: (head, body, foot) => {
+      dispatch(actionCreator.storeHeaderBodyFooter(head, body, foot))
+    }
   }
 }
 

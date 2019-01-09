@@ -33,19 +33,21 @@ export default function reducer(state=defaultState, action) {
         ...state, BIUBar: {...state.BIUBar, textColorClicked: !state.BIUBar.textColorClicked}
       }
     //IFRAMES
-    case "SET_HEADERBOX_ELEMENT":
+    case "SET_HBF_ELEMENTS":
       return {
-        ...state, iframes: {...state.iframes, headerBox: action.payload}
+        ...state, iframes: {...state.iframes, headerBox: action.payload.head, bodyBox: action.payload.body, footerBox: action.payload.foot}
       }
-
-    case "SET_BODYBOX_ELEMENT":
-      return {
-        ...state, iframes: {...state.iframes, bodyBox: action.payload}
+    case "ENABLE_HBF_DESIGNMODE":
+      let updatedBoxes = {
+        newHeadBox: state.iframes.headerBox,
+        newBodyBox: state.iframes.bodyBox,
+        newFooterBox: state.iframes.footerBox
       }
-
-    case "SET_FOOTERBOX_ELEMENT":
+      updatedBoxes.newHeadBox.contentWindow.document.designMode = 'On';
+      updatedBoxes.newBodyBox.contentWindow.document.designMode = 'On';
+      updatedBoxes.newFooterBox.contentWindow.document.designMode = 'On';
       return {
-        ...state, iframes: {...state.iframes, footerBox: action.payload}
+        ...state, iframes: {...state.iframes, headerBox: updatedBoxes.newHeadBox, bodyBox: updatedBoxes.newBodyBox, footerBox: updatedBoxes.newFooterBox}
       }
     default:
       return state;

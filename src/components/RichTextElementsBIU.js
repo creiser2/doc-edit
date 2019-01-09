@@ -18,7 +18,6 @@ class RichTextElementsBIU extends Component {
 
   handleBoldButtonClicked = () => {
     this.props.boldButtonClicked();
-    debugger;
   }
 
   handleItalicButtonClicked = () => {
