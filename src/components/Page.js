@@ -16,7 +16,6 @@ class Page extends Component {
       foot: document.getElementById("footerBox")
     }
     this.props.storeHeaderBodyFooter(elements.head, elements.body, elements.foot);
-
   }
 
   render() {
