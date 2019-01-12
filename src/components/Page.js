@@ -10,13 +10,45 @@ const Header = ({ children }) => (
 );
 
 const HeaderFrame = (props, context) => (
-<Frame>
+  //styles go in head somehow!
+<Frame class='headerBox' head={
+    <link type='text/css' href='../css/HeaderBox.css' />
+    }>
   <FrameContextConsumer>
     {
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
         // Render Children
-        debugger;
+      }
+    }
+  </FrameContextConsumer>
+</Frame>
+)
+
+const BodyFrame = (props, context) => (
+<Frame class='bodyBox' head={
+      <link type='text/css' href='../css/BodyBox.css' />
+    }>
+  <FrameContextConsumer>
+    {
+      // Callback is invoked with iframe's window and document instances
+      ({document, window}) => {
+        // Render Children
+      }
+    }
+  </FrameContextConsumer>
+</Frame>
+)
+
+const FooterFrame = (props, context) => (
+<Frame class='footerBox' head={
+      <link type='text/css' href='../css/FooterBox.css' />
+    }>
+  <FrameContextConsumer>
+    {
+      // Callback is invoked with iframe's window and document instances
+      ({document, window}) => {
+        // Render Children
       }
     }
   </FrameContextConsumer>
@@ -39,7 +71,12 @@ class Page extends Component {
       <div className="Page">
         <label>
           <HeaderFrame>
+            <Header>What</Header>
           </HeaderFrame>
+          <BodyFrame class='bodyBox'>
+          </BodyFrame>
+          <FooterFrame class='footerBox'>
+          </FooterFrame>
         </label>
       </div>
     );
