@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreator from '../reducers/actions';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
+//
+// const Header = ({ children }) => (
+  //   <Frame>
+  //     <h1>{children}</h1>
+  //   </Frame>
+  // );
+  //
 
 const headerClicked = (event) => {
   console.log("Header Clicked!")
-  debugger;
 }
 
 const bodyClicked = (event) => {
@@ -16,13 +22,6 @@ const footerClicked = (event) => {
   console.log("Footer Clicked!")
 }
 
-const Header = ({ children }) => (
-  <Frame>
-    <h1>{children}</h1>
-  </Frame>
-);
-
-
 const HeaderFrame = (props, context) => (
   //styles go in head somehow!
 <Frame class='headerBox' head={
@@ -32,6 +31,7 @@ const HeaderFrame = (props, context) => (
     {
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
+        debugger;
         document.addEventListener("click", headerClicked, false);
         // Render Children
       }
