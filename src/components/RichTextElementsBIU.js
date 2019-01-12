@@ -18,25 +18,29 @@ class RichTextElementsBIU extends Component {
 
   handleBoldButtonClicked = () => {
     this.props.boldButtonClicked();
+    this.updateInputText('bold');
   }
 
   handleItalicButtonClicked = () => {
     this.props.italicButtonClicked();
+    this.updateInputText('italic');
   }
 
   handleUnderlineButtonClicked = () => {
     this.props.underlineButtonClicked();
+    this.updateInputText('underline');
   }
 
   handleTextColorClicked = () => {
     this.props.textColorClicked();
+    //implement box pop up
   }
 
-  //change iframes, from here... unfortunately...
-  execCMD = () => {
-
+  updateInputText = (command) => {
+    this.props.iframes.headerBox.contentWindow.document.execCommand(command, false, null);
+    this.props.iframes.bodyBox.contentWindow.document.execCommand(command, false, null);
+    this.props.iframes.footerBox.contentWindow.document.execCommand(command, false, null);
   }
-
 
   loadRTEAnimations = () => {
     let innerVals = this.props.BIUBar;

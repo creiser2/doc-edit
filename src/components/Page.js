@@ -1,6 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreator from '../reducers/actions';
+import Frame, { FrameContextConsumer } from 'react-frame-component';
+
+const Header = ({ children }) => (
+  <Frame>
+    <h1>{children}</h1>
+  </Frame>
+);
+
+const HeaderFrame = (props, context) => (
+<Frame>
+  <FrameContextConsumer>
+    {
+      // Callback is invoked with iframe's window and document instances
+      ({document, window}) => {
+        // Render Children
+        debugger;
+      }
+    }
+  </FrameContextConsumer>
+</Frame>
+)
+
 
 class Page extends Component {
   state = {
@@ -10,22 +32,15 @@ class Page extends Component {
   }
 
   componentDidMount() {
-    let elements = {
-      head: document.getElementById("headerBox"),
-      body: document.getElementById("bodyBox"),
-      foot: document.getElementById("footerBox")
-    }
-    this.props.storeHeaderBodyFooter(elements.head, elements.body, elements.foot);
   }
 
   render() {
     return (
       <div className="Page">
-      <label>
-        <iframe id="headerBox" name="header" className="headerBox" scrolling="no"></iframe>
-        <iframe id="bodyBox" name="body" className="bodyBox" scrolling="no"></iframe>
-        <iframe id="footerBox" name="footer" className="footerBox" scrolling="no"></iframe>
-      </label>
+        <label>
+          <HeaderFrame>
+          </HeaderFrame>
+        </label>
       </div>
     );
   }

@@ -1,4 +1,7 @@
 const defaultState = {
+  cursorState: {
+
+  },
   BIUBar: {
     boldClicked: false,
     italicClicked: false,
@@ -49,6 +52,19 @@ export default function reducer(state=defaultState, action) {
       return {
         ...state, iframes: {...state.iframes, headerBox: updatedBoxes.newHeadBox, bodyBox: updatedBoxes.newBodyBox, footerBox: updatedBoxes.newFooterBox}
       }
+      //maybe update iframes here with exec command? idk this part is very confusing
+    case "UPDATE_INPUT_TEXT":
+      // let updatedBoxes = {
+      //   newHeadBox: state.iframes.headerBox,
+      //   newBodyBox: state.iframes.bodyBox,
+      //   newFooterBox: state.iframes.footerBox
+      // }
+      // updatedBoxes.newHeadBox.contentWindow.document.designMode = 'On';
+      // updatedBoxes.newBodyBox.contentWindow.document.designMode = 'On';
+      // updatedBoxes.newFooterBox.contentWindow.document.designMode = 'On';
+      // return {
+      //   ...state
+      // }
     default:
       return state;
   }
