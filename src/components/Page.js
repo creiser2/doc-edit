@@ -2,24 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreator from '../reducers/actions';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
-//
-// const Header = ({ children }) => (
-  //   <Frame>
-  //     <h1>{children}</h1>
-  //   </Frame>
-  // );
-  //
+
+//get the text from header, body, and footer when user clicks off
+function extractContent(s) {
+  var span = document.createElement('span');
+  span.innerHTML = s;
+  return span.textContent || span.innerText;
+};
+
 
 const headerClicked = (event) => {
-  console.log("Header Clicked!")
+  let extractedText = extractContent(event.target.innerHTML);
 }
 
 const bodyClicked = (event) => {
-  console.log("Body Clicked!")
+  let extractedText = extractContent(event.target.innerHTML);
 }
 
 const footerClicked = (event) => {
-  console.log("Footer Clicked!")
+  let extractedText = extractContent(event.target.innerHTML);
 }
 
 const HeaderFrame = (props, context) => (
