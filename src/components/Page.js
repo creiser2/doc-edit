@@ -31,8 +31,8 @@ const HeaderFrame = (props, context) => (
     {
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
-        debugger;
         document.addEventListener("click", headerClicked, false);
+        document.designMode = 'On';
         // Render Children
       }
     }
@@ -50,6 +50,7 @@ const BodyFrame = (props, context) => (
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
         document.addEventListener("click", bodyClicked, false);
+        document.designMode = 'On';
         // Render Children
       }
     }
@@ -66,6 +67,7 @@ const FooterFrame = (props, context) => (
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
         document.addEventListener("click", footerClicked, false);
+        document.designMode = 'On';
         // Render Children
       }
     }
