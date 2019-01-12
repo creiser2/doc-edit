@@ -3,11 +3,25 @@ import { connect } from 'react-redux';
 import * as actionCreator from '../reducers/actions';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
+const headerClicked = (event) => {
+  console.log("Header Clicked!")
+  debugger;
+}
+
+const bodyClicked = (event) => {
+  console.log("Body Clicked!")
+}
+
+const footerClicked = (event) => {
+  console.log("Footer Clicked!")
+}
+
 const Header = ({ children }) => (
   <Frame>
     <h1>{children}</h1>
   </Frame>
 );
+
 
 const HeaderFrame = (props, context) => (
   //styles go in head somehow!
@@ -18,12 +32,14 @@ const HeaderFrame = (props, context) => (
     {
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
+        document.addEventListener("click", headerClicked, false);
         // Render Children
       }
     }
   </FrameContextConsumer>
 </Frame>
 )
+
 
 const BodyFrame = (props, context) => (
 <Frame class='bodyBox' head={
@@ -33,6 +49,7 @@ const BodyFrame = (props, context) => (
     {
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
+        document.addEventListener("click", bodyClicked, false);
         // Render Children
       }
     }
@@ -48,6 +65,7 @@ const FooterFrame = (props, context) => (
     {
       // Callback is invoked with iframe's window and document instances
       ({document, window}) => {
+        document.addEventListener("click", footerClicked, false);
         // Render Children
       }
     }
@@ -70,8 +88,7 @@ class Page extends Component {
     return (
       <div className="Page">
         <label>
-          <HeaderFrame>
-            <Header>What</Header>
+          <HeaderFrame class='headerBox'>
           </HeaderFrame>
           <BodyFrame class='bodyBox'>
           </BodyFrame>
