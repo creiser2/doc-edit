@@ -4,77 +4,7 @@ import * as actionCreator from '../reducers/actions';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 //get the text from header, body, and footer when user clicks off
-function extractContent(s) {
-  var span = document.createElement('span');
-  span.innerHTML = s;
-  return span.textContent || span.innerText;
-};
 
-
-const headerClicked = (event) => {
-  let extractedText = extractContent(event.target.innerHTML);
-}
-
-const bodyClicked = (event) => {
-  let extractedText = extractContent(event.target.innerHTML);
-}
-
-const footerClicked = (event) => {
-  let extractedText = extractContent(event.target.innerHTML);
-}
-
-const HeaderFrame = (props, context) => (
-  //styles go in head somehow!
-<Frame class='headerBox' head={
-    <link type='text/css' href='../css/HeaderBox.css' />
-    }>
-  <FrameContextConsumer>
-    {
-      // Callback is invoked with iframe's window and document instances
-      ({document, window}) => {
-        document.addEventListener("click", headerClicked, false);
-        document.designMode = 'On';
-        // Render Children
-      }
-    }
-  </FrameContextConsumer>
-</Frame>
-)
-
-
-const BodyFrame = (props, context) => (
-<Frame class='bodyBox' head={
-      <link type='text/css' href='../css/BodyBox.css' />
-    }>
-  <FrameContextConsumer>
-    {
-      // Callback is invoked with iframe's window and document instances
-      ({document, window}) => {
-        document.addEventListener("click", bodyClicked, false);
-        document.designMode = 'On';
-        // Render Children
-      }
-    }
-  </FrameContextConsumer>
-</Frame>
-)
-
-const FooterFrame = (props, context) => (
-<Frame class='footerBox' head={
-      <link type='text/css' href='../css/FooterBox.css' />
-    }>
-  <FrameContextConsumer>
-    {
-      // Callback is invoked with iframe's window and document instances
-      ({document, window}) => {
-        document.addEventListener("click", footerClicked, false);
-        document.designMode = 'On';
-        // Render Children
-      }
-    }
-  </FrameContextConsumer>
-</Frame>
-)
 
 
 class Page extends Component {
@@ -84,6 +14,28 @@ class Page extends Component {
     footer: "",
   }
 
+  extractContent = (s) => {
+    var span = document.createElement('span');
+    span.innerHTML = s;
+    return span.textContent || span.innerText;
+  };
+
+  headerClicked = (event) => {
+    let extractedText = this.extractContent(event.target.innerHTML);
+    console.log(extractedText)
+  }
+
+  bodyClicked = (event) => {
+    let extractedText = this.extractContent(event.target.innerHTML);
+    console.log(extractedText)
+  }
+
+  footerClicked = (event) => {
+    let extractedText = this.extractContent(event.target.innerHTML);
+    console.log(extractedText)
+  }
+
+
   componentDidMount() {
   }
 
@@ -91,12 +43,48 @@ class Page extends Component {
     return (
       <div className="Page">
         <label>
-          <HeaderFrame class='headerBox'>
-          </HeaderFrame>
-          <BodyFrame class='bodyBox'>
-          </BodyFrame>
-          <FooterFrame class='footerBox'>
-          </FooterFrame>
+          <Frame class='headerBox' head={
+              <link type='text/css' href='../css/HeaderBox.css' />
+              }>
+            <FrameContextConsumer>
+              {
+                // Callback is invoked with iframe's window and document instances
+                ({document, window}) => {
+                  document.addEventListener("click", this.headerClicked, false);
+                  document.designMode = 'On';
+                  // Render Children
+                }
+              }
+            </FrameContextConsumer>
+          </Frame>
+          <Frame class='bodyBox' head={
+              <link type='text/css' href='../css/HeaderBox.css' />
+              }>
+            <FrameContextConsumer>
+              {
+                // Callback is invoked with iframe's window and document instances
+                ({document, window}) => {
+                  document.addEventListener("click", this.bodyClicked, false);
+                  document.designMode = 'On';
+                  // Render Children
+                }
+              }
+            </FrameContextConsumer>
+          </Frame>
+          <Frame class='footerBox' head={
+              <link type='text/css' href='../css/HeaderBox.css' />
+              }>
+            <FrameContextConsumer>
+              {
+                // Callback is invoked with iframe's window and document instances
+                ({document, window}) => {
+                  document.addEventListener("click", this.footerClicked, false);
+                  document.designMode = 'On';
+                  // Render Children
+                }
+              }
+            </FrameContextConsumer>
+          </Frame>
         </label>
       </div>
     );
