@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreator from '../reducers/actions';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
-import { HeaderFrame, BodyFrame, FooterFrame } from './frames/index'
+// import { HeaderFrame, BodyFrame, FooterFrame } from './frames/index'
 
 //get the text from header, body, and footer when user clicks off
 
 
 
 class Page extends Component {
-
+  //I wonder if I could see if an iframe was clicked for the first time, after being unfocused, and then
+  // do the execCommands based off of that? Maybe we call execCommand for all BIU elements on first click of iframe...
+  
   //lastFocusEvent lets us save the text of the box that was clicked off... Pretty cool!
   state = {
     focusEvent: "",
@@ -28,6 +30,7 @@ class Page extends Component {
 
   //header was clicked on
   headerClicked = (event) => {
+    this.executeBIUValues();
     event.target.id = "header";
 
     let extractedText = this.extractContent(event.target.innerHTML);
@@ -36,6 +39,11 @@ class Page extends Component {
       focusEvent: event.target,
     })
     this.setLastFocusText();
+  }
+
+  //must throw exec command on
+  executeBIUValues = () => {
+
   }
 
   //body was clicked on
