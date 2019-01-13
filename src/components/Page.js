@@ -12,13 +12,16 @@ class Page extends Component {
   //I wonder if I could see if an iframe was clicked for the first time, after being unfocused, and then
   // do the execCommands based off of that? Maybe we call execCommand for all BIU elements on first click of iframe...
 
-  //lastFocusEvent lets us save the text of the box that was clicked off... Pretty cool!
+  //lastFocusTarget lets us save the text of the box that was clicked off... Pretty cool!
   state = {
-    focusEvent: "",
-    lastFocusEvent: "",
-    header: "",
-    body: "",
-    footer: "",
+    focusTarget: "",
+    lastFocusTarget: "",
+    headerText: "",
+    bodyText: "",
+    footerText: "",
+    headerDoc: null,
+    bodyDoc: null,
+    footerDoc: null,
   }
 
   //function strips text out of HTML
@@ -35,35 +38,48 @@ class Page extends Component {
 
     let extractedText = this.extractContent(event.target.innerHTML);
     this.setState({
-      lastFocusEvent: this.state.focusEvent,
-      focusEvent: event.target,
+      lastFocusTarget: this.state.focusTarget,
+      focusTarget: event.target,
     })
     this.setLastFocusText();
-    console.log(this.firstTimeClicked("header"));
+    if(this.firstTimeClicked("header")) {
+      if(!this.state.headerDoc) {
+        this.setState({
+          headerDoc: event.target.parentNode
+        })
+      }
+      this.executeBIUValues("body");
+    }
   }
 
   //must throw exec command on specific frame for it to work
   executeBIUValues = (frame) => {
-
+    // this.props.iframes.footerBox.contentWindow.document.execCommand(command, false, null)
+    console.log(this.stateToString())
   }
 
   //basically check if this is an initial click, if it is... execute BIU values
   firstTimeClicked = (frame) => {
-    return this.state.lastFocusEvent.id != frame
+    return this.state.lastFocusTarget.id != frame
   }
 
   //body was clicked on
   bodyClicked = (event) => {
     event.target.id = "body";
 
-
     let extractedText = this.extractContent(event.target.innerHTML);
     this.setState({
-      lastFocusEvent: this.state.focusEvent,
-      focusEvent: event.target,
+      lastFocusTarget: this.state.focusTarget,
+      focusTarget: event.target,
     })
     this.setLastFocusText();
+    ///****event.target.parentNode will give the document node that we need
     if(this.firstTimeClicked("body")) {
+      if(!this.state.bodyDoc) {
+        this.setState({
+          bodyDoc: event.target.parentNode
+        })
+      }
       this.executeBIUValues("body");
     }
   }
@@ -74,19 +90,27 @@ class Page extends Component {
 
     let extractedText = this.extractContent(event.target.innerHTML);
     this.setState({
-      lastFocusEvent: this.state.focusEvent,
-      focusEvent: event.target,
+      lastFocusTarget: this.state.focusTarget,
+      focusTarget: event.target,
     })
     this.setLastFocusText();
-    console.log(this.firstTimeClicked("footer"));
+    if(this.firstTimeClicked("footer")) {
+      if(!this.state.footerDoc) {
+        this.setState({
+          footerDoc: event.target.parentNode
+        })
+      }
+      this.executeBIUValues("body");
+    }
   }
 
   //save the text of the last focused element to state... Could be useful later. But really we want to HTML to go to redux at this point too
   setLastFocusText = () => {
-    let iframeName = this.state.lastFocusEvent.id;
-    let iframeText = this.state.lastFocusEvent.innerText;
+    let iframeName = this.state.lastFocusTarget.id + "Text";
+    let iframeText = this.state.lastFocusTarget.innerText;
+    debugger;
     this.setState({
-      iframeName: iframeText,
+      [iframeName]: iframeText,
     })
   }
 
