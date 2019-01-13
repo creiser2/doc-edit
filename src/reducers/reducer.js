@@ -54,17 +54,7 @@ export default function reducer(state=defaultState, action) {
       }
       //maybe update iframes here with exec command? idk this part is very confusing
     case "UPDATE_INPUT_TEXT":
-      // let updatedBoxes = {
-      //   newHeadBox: state.iframes.headerBox,
-      //   newBodyBox: state.iframes.bodyBox,
-      //   newFooterBox: state.iframes.footerBox
-      // }
-      // updatedBoxes.newHeadBox.contentWindow.document.designMode = 'On';
-      // updatedBoxes.newBodyBox.contentWindow.document.designMode = 'On';
-      // updatedBoxes.newFooterBox.contentWindow.document.designMode = 'On';
-      // return {
-      //   ...state
-      // }
+      return state;
     default:
       return state;
   }
