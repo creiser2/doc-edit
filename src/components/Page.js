@@ -11,7 +11,7 @@ import Frame, { FrameContextConsumer } from 'react-frame-component';
 class Page extends Component {
   //I wonder if I could see if an iframe was clicked for the first time, after being unfocused, and then
   // do the execCommands based off of that? Maybe we call execCommand for all BIU elements on first click of iframe...
-  
+
   //lastFocusEvent lets us save the text of the box that was clicked off... Pretty cool!
   state = {
     focusEvent: "",
@@ -39,16 +39,23 @@ class Page extends Component {
       focusEvent: event.target,
     })
     this.setLastFocusText();
+    console.log(this.firstTimeClicked("header"));
   }
 
-  //must throw exec command on
-  executeBIUValues = () => {
+  //must throw exec command on specific frame for it to work
+  executeBIUValues = (frame) => {
 
+  }
+
+  //basically check if this is an initial click, if it is... execute BIU values
+  firstTimeClicked = (frame) => {
+    return this.state.lastFocusEvent.id != frame
   }
 
   //body was clicked on
   bodyClicked = (event) => {
     event.target.id = "body";
+
 
     let extractedText = this.extractContent(event.target.innerHTML);
     this.setState({
@@ -56,6 +63,9 @@ class Page extends Component {
       focusEvent: event.target,
     })
     this.setLastFocusText();
+    if(this.firstTimeClicked("body")) {
+      this.executeBIUValues("body");
+    }
   }
 
   //footer was clicked on
@@ -68,6 +78,7 @@ class Page extends Component {
       focusEvent: event.target,
     })
     this.setLastFocusText();
+    console.log(this.firstTimeClicked("footer"));
   }
 
   //save the text of the last focused element to state... Could be useful later. But really we want to HTML to go to redux at this point too
